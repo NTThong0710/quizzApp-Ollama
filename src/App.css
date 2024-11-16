@@ -1,38 +1,242 @@
-.App {
+body {
+  background-image: url('./assets/background.jpg'); /* Thay /path/to/your/image.jpg bằng đường dẫn tới ảnh */
+  background-size: cover; /* Điều chỉnh để hình ảnh bao phủ toàn bộ trang */
+  background-position: center; /* Đảm bảo hình nền được căn giữa */
+  background-repeat: no-repeat; /* Ngừng lặp lại hình nền */
+  height: 100vh;
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+/* Container chính */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Tiêu đề ứng dụng */
+h1 {
+  color: #007bff;
+  font-weight: bold;
+  font-size: 2.5em;
+  margin-bottom: 20px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
+/* Câu hỏi */
+.question-container {
+  background-color: #ffffff;
+  border: 1px solid #e1e1e1;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.question-text {
+  font-size: 1.2em;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+/* Các nút trả lời */
+.answer-btn {
+  display: block;
+  width: 100%;
+  background-color: #f0f0f0;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-bottom: 10px;
+}
+
+.answer-btn:hover {
+  background-color: #e2e6ea;
+}
+
+.answer-btn.selected {
+  background-color: #007bff;
+  color: #fff;
+}
+
+/* Thông báo */
+.alert {
+  font-size: 1em;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Lịch sử điểm số */
+.score-history {
+  margin-top: 30px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.score-history h4 {
+  font-size: 1.5em;
+  color: #007bff;
+  margin-bottom: 15px;
+}
+
+.list-group-item {
+  border: none;
+  padding: 10px;
+  font-size: 1.1em;
+}
+
+/* Nút gửi và nộp bài */
+button {
+  display: inline-block;
+  font-size: 1em;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Kiểu cho thông báo ôn tập */
+.alert-info, .alert-warning {
+  font-size: 1.1em;
+  padding: 15px;
+  color: #004085;
+  background-color: #cce5ff;
+  border-color: #b8daff;
+  border-radius: 8px;
+}
+
+.alert-warning {
+  color: #856404;
+  background-color: #fff3cd;
+  border-color: #ffeeba;
+}
+
+/* Phản hồi cho câu hỏi */
+.feedback-item {
+  background-color: #f8f9fa;
+  border: 1px solid #ced4da;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.feedback-item.correct {
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}
+
+.feedback-item.incorrect {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+}
+
+/* Responsive thiết kế */
+@media (max-width: 768px) {
+  h1 {
+      font-size: 2em;
+  }
+  .answer-btn {
+      font-size: 0.9em;
+  }
+  .progress {
+      height: 20px;
+  }
+}
+/* Các nút trả lời lớn và có không gian cách đều */
+.option-button {
+    font-size: 1.5rem; /* Tăng kích thước chữ */
+    padding: 20px; /* Tăng kích thước nút */
+    min-height: 70px; /* Đảm bảo nút đủ cao */
+    border-radius: 12px; /* Làm tròn các góc */
+    transition: all 0.3s ease; /* Thêm hiệu ứng chuyển động */
+}
+
+.option-button:hover {
+    background-color: #007bff; /* Màu nền khi hover */
+    color: white; /* Màu chữ khi hover */
+}
+
+/* Điều chỉnh vị trí các nút trả lời */
+.card{
+  background: linear-gradient(135deg, #2c3e50, #34495e);
+}
+.card-footer {
+    display: flex;
+    flex-direction: column; /* Đảm bảo các nút được sắp xếp theo cột */
+    justify-content: center; /* Căn giữa các nút */
+    align-items: center; /* Căn giữa các nút */
+}
+.text-center{
+  color: #2196f3;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+}
+
+/* Thanh tiến độ */
+.progress {
+  height: 30px;
+  background-color: #e0e0e0;
+  border-radius: 8px; /* Bo tròn nhẹ */
+  margin-top: 20px;
+  margin-bottom: 20px;
+  position: relative;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Thanh tiến độ đã điền với gradient từ xanh lá qua tím */
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(to left, #2196f3, #ffffff); /* Gradient từ xanh lá sang tím */
+  transition: width 0.4s ease-in-out;
+  border-radius: 8px; /* Bo tròn nhẹ cho thanh tiến độ */
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.4);
+}
+/* Hiệu ứng ánh sáng cho thanh tiến độ */
+.progress-bar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 8px; /* Bo tròn giống thanh */
+  opacity: 0.3; /* Làm nhẹ hiệu ứng ánh sáng */
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Các chữ và icon trong thanh tiến độ (nếu có) */
+.progress-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: bold;
+  font-size: 16px;
+  color: #fff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.text1{
+  color:#b8daff;
 }

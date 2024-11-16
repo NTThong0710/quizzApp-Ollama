@@ -1,0 +1,232 @@
+/* Reset các thuộc tính mặc định */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Đặt nền và font cho toàn bộ ứng dụng */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7fa;
+    color: #333;
+    padding: 20px;
+    background-color: #fdf6e3; /* Màu nền dịu nhẹ */
+}
+
+/* Chỉnh sửa các thẻ tiêu đề */
+h2, h3 {
+    color: #d32f2f; /* Đỏ Giáng Sinh */
+    margin-bottom: 20px;
+}
+
+/* Thêm class cho tiêu đề chính */
+.central-heading {
+    text-align: center;
+    font-weight: bold;
+    color: #00897b; /* Xanh lá cây Giáng Sinh */
+    margin-bottom: 30px;
+    font-size: 28px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Form thêm câu hỏi - đã làm nhỏ gọn hơn */
+form {
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 100px;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    background-image: url('https://cdn.pixabay.com/photo/2019/12/10/17/30/christmas-4687817_960_720.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+/* Định dạng các ô input trong form */
+input[type="text"],
+input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    background-color: #f9f9f9;
+    border: 2px solid #388e3c; /* Xanh lá cây */
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+    border-color: #d32f2f; /* Đỏ Giáng Sinh */
+    outline: none;
+}
+
+/* Chia các input thành 2 hàng, mỗi hàng 2 ô */
+.form-inputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 cột đều nhau */
+    gap: 10px; /* Khoảng cách giữa các ô */
+    margin-bottom: 15px; /* Khoảng cách dưới các ô nhập liệu */
+}
+
+/* Style cho các nút */
+button {
+    background-color: #d32f2f; /* Đỏ Giáng Sinh */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #c62828; /* Đỏ đậm */
+}
+
+/* Bảng với kiểu dáng chuyên nghiệp */
+table {
+    width: 100%;
+    margin-top: 30px;
+    border-collapse: separate;
+    border-spacing: 0 10px; /* Khoảng cách giữa các dòng */
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Định dạng tiêu đề bảng */
+th {
+    background-color: #388e3c; /* Màu nền xanh lá cây */
+    color: white;
+    font-weight: bold;
+    padding: 15px;
+    text-align: left;
+    text-transform: uppercase; /* Chữ in hoa cho tiêu đề */
+    letter-spacing: 1px; /* Khoảng cách giữa các chữ */
+    border-radius: 8px 8px 0 0; /* Bo góc trên của tiêu đề */
+}
+
+/* Định dạng các ô trong bảng */
+td {
+    padding: 12px;
+    text-align: left;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    transition: background-color 0.3s ease; /* Hiệu ứng chuyển màu nền */
+}
+
+/* Hiệu ứng hover cho các dòng trong bảng */
+tr:hover {
+    background-color: #f1f1f1;
+    transform: scale(1.02); /* Phóng to dòng khi hover */
+    transition: transform 0.2s ease; /* Hiệu ứng phóng to */
+}
+
+/* Định dạng các dòng chẵn và lẻ */
+tr:nth-child(odd) td {
+    background-color: #e8f5e9; /* Màu nền cho dòng lẻ */
+}
+
+tr:nth-child(even) td {
+    background-color: #ffffff; /* Màu nền cho dòng chẵn */
+}
+
+/* Hiệu ứng khi di chuột vào các nút sửa/xóa */
+button.edit, button.delete {
+    background-color: #388e3c; /* Xanh lá cây */
+    color: white;
+    padding: 8px 16px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button.edit:hover {
+    background-color: #2c6e2f; /* Xanh đậm */
+}
+
+button.delete {
+    background-color: #dc3545; /* Đỏ */
+}
+
+button.delete:hover {
+    background-color: #c82333; /* Đỏ đậm */
+}
+
+/* Hiệu ứng viền mượt cho bảng */
+table {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Các họa tiết giáng sinh */
+body::before {
+    content: "❄️"; /* Biểu tượng tuyết */
+    font-size: 80px;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    opacity: 0.2;
+}
+
+body::after {
+    content: "🎄"; /* Biểu tượng cây thông */
+    font-size: 90px;
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    opacity: 0.3;
+}
+
+/* Các hiệu ứng tuyết rơi */
+@keyframes snowflakes {
+    0% {
+        top: -10%;
+        left: 50%;
+        opacity: 0.8;
+    }
+    100% {
+        top: 100%;
+        left: random(100%);
+        opacity: 1;
+    }
+}
+
+.snowflake {
+    position: absolute;
+    top: -10%;
+    font-size: 24px;
+    color: white;
+    animation: snowflakes 5s infinite linear;
+}
+
+.snowflake:nth-child(odd) {
+    font-size: 18px;
+}
+
+.snowflake:nth-child(even) {
+    font-size: 22px;
+}
+
+.snowflake::after {
+    content: "❄️"; /* Biểu tượng tuyết */
+}
+
+.snowfall {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+}
