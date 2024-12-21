@@ -1,8 +1,8 @@
+@import "~font-awesome/css/font-awesome.min.css";
 body {
-  background-image: url('./assets/background.jpg'); /* Thay /path/to/your/image.jpg bằng đường dẫn tới ảnh */
+  background-image: url('./assets/background.jpg');
   background-size: cover; /* Điều chỉnh để hình ảnh bao phủ toàn bộ trang */
   background-position: center; /* Đảm bảo hình nền được căn giữa */
-  background-repeat: no-repeat; /* Ngừng lặp lại hình nền */
   height: 100vh;
   font-family: Arial, sans-serif;
   background-color: #f9f9f9;
@@ -178,7 +178,7 @@ button:hover {
 
 /* Điều chỉnh vị trí các nút trả lời */
 .card{
-  background: linear-gradient(135deg, #2c3e50, #34495e);
+  background: linear-gradient(135deg, #f0f8ff, #87cefa);
 }
 .card-footer {
     display: flex;
@@ -239,4 +239,43 @@ button:hover {
 }
 .text1{
   color:#b8daff;
+}
+.logout-button-container {
+  display: flex;
+  justify-content: center;
+}
+.container-btn{
+  background-color: black;
+  border-radius: 10px;
+}
+
+.btn.btn-flat{
+  border-radius: 0;
+  border: 2px solid;
+  height: 50px;
+  background: transparent;
+  -webkit-transition: 0.9s;
+  transition: 0.9s;
+}
+.btn-flat.btn-primary{
+  color: #007bff;
+  background: linear-gradient(30deg, #007bff 50%, transparent 50%);
+  background-position: right bottom;
+  background-size: 220% 100%;
+}
+.btn-flat.btn-primary:hover{
+  background-position: left bottom;
+  border: 2px solid #0077ff;
+  color: #fff;
+}
+.btn-flat.btn-success{
+  color: #28a745;
+  background: linear-gradient(30deg, #28a745 50%, transparent 50%);
+  background-position: right bottom;
+  background-size: 220% 100%;
+}
+.btn-flat.btn-success:hover{
+  background-position: left bottom;
+  border: 2px solid #28a745;
+  color: #fff;
 }

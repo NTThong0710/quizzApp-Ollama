@@ -1,0 +1,235 @@
+:root {
+    --gradient-primary: linear-gradient(135deg, #6366F1 0%, #4F46E5 100%);
+    --gradient-success: linear-gradient(135deg, #059669 0%, #10B981 100%);
+    --gradient-warning: linear-gradient(135deg, #F59E0B 0%, #FBBF24 100%);
+    --gradient-danger: linear-gradient(135deg, #EF4444 0%, #F87171 100%);
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .scoreboard {
+    max-width: 1200px;
+    margin: 30px auto;
+    border-radius: 16px;
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+    border: 1px solid rgba(99, 102, 241, 0.1);
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  thead {
+    position: relative;
+  }
+  
+  thead::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--gradient-primary);
+  }
+  
+  th {
+    background: #F8FAFC;
+    padding: 20px 24px;
+    text-align: left;
+    font-weight: 600;
+    color: #1E293B;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  td {
+    padding: 24px;
+    border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+  }
+  
+  tr:hover {
+    background: rgba(99, 102, 241, 0.02);
+  }
+  
+  /* Score history card */
+  .history-card {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    margin: 12px 0;
+    box-shadow: var(--shadow-md);
+    border: 1px solid rgba(99, 102, 241, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .history-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
+  
+  .score-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  
+  .score {
+    font-size: 32px;
+    font-weight: 700;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding: 8px 0;
+  }
+  
+  .score-label {
+    font-weight: 500;
+    color: #64748B;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  .topic-list {
+    display: grid;
+    gap: 12px;
+    margin: 20px 0;
+  }
+  
+  .topic-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    background: #F8FAFC;
+    border-radius: 8px;
+    transition: transform 0.2s ease;
+  }
+  
+  .topic-item:hover {
+    transform: translateX(4px);
+  }
+  
+  .topic-name {
+    color: #334155;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .topic-name::before {
+    content: '📚';
+  }
+  
+  .topic-score {
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+  }
+  
+  /* Score modifiers */
+  .score-high {
+    background: var(--gradient-success);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .score-medium {
+    background: var(--gradient-warning);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .score-low {
+    background: var(--gradient-danger);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .bg-score-high {
+    background: #ECFDF5;
+    color: #059669;
+  }
+  
+  .bg-score-medium {
+    background: #FFFBEB;
+    color: #F59E0B;
+  }
+  
+  .bg-score-low {
+    background: #FEF2F2;
+    color: #EF4444;
+  }
+  
+  .date {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #64748B;
+    font-size: 0.9rem;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid #F1F5F9;
+  }
+  
+  .date::before {
+    content: '🗓️';
+  }
+  
+  .username {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    color: #1E293B;
+    font-size: 1.1rem;
+  }
+  
+  .username::before {
+    content: '👤';
+    font-size: 1.4rem;
+  }
+  
+  .empty-state {
+    text-align: center;
+    padding: 48px 24px;
+    color: #64748B;
+    background: #F8FAFC;
+    border-radius: 12px;
+    margin: 12px 0;
+  }
+  
+  /* Badge for new scores */
+  .new-score {
+    background: #EEF2FF;
+    color: #4F46E5;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-left: auto;
+  }
+  
+  /* Animations */
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .history-card {
+    animation: slideIn 0.3s ease forwards;
+  }

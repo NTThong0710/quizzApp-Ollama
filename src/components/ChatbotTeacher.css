@@ -1,0 +1,98 @@
+.chatbot-form1 {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    width: 400px; /* Đặt chiều rộng cố định cho form */
+    height: 150px;
+    gap: 10px;
+    margin: 0; /* Loại bỏ margin để phần nhập liệu không bị lệch */
+    position: absolute; /* Đặt form ở vị trí tuyệt đối */
+    top: 30%; /* Đặt form ở giữa theo chiều dọc của container */
+    right: 12%; /* Đặt form ở bên phải container */
+    transform: translateY(-50%); /* Canh giữa form theo chiều dọc */
+}
+  
+  .chatbot-container1 {
+    max-width: 1200px;
+    margin-top: 150px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    background-image: url('../assets/giphy.gif');
+    background-size: 100% 100%; /* Kéo giãn ảnh vừa khít khung */
+    position: relative; /* Đảm bảo các phần tử con sử dụng position:absolute có thể nằm trong container này */
+    overflow: hidden; /* Đảm bảo các phần tử không bị tràn ra ngoài container */
+    height: 400px;
+  }
+  
+  
+  .chatbot-input1 {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s ease;
+  }
+  
+  .chatbot-input1:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+  }
+  
+  .chatbot-button1 {
+    padding: 12px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .chatbot-button1:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+  }
+  
+  .chatbot-button1:hover:not(:disabled) {
+    background-color: #0056b3;
+  }
+  
+  .chatbot-response1 {
+    padding: 15px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    min-height: 50px;
+  }
+  
+  .response-text1 {
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .loading-text1 {
+    font-size: 16px;
+    font-style: italic;
+    color: #555;
+    text-align: center;
+  }
+  
+  @media (max-width: 768px) {
+    .chatbot-container {
+      padding: 15px;
+    }
+  
+    .chatbot-button1 {
+      font-size: 14px;
+      padding: 10px;
+    }
+  
+    .chatbot-input1 {
+      font-size: 14px; /* Giảm kích thước font khi ở màn hình nhỏ */
+    }
+  }
+  

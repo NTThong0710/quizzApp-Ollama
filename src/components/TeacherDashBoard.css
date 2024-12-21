@@ -1,3 +1,4 @@
+@import "~font-awesome/css/font-awesome.min.css";
 /* Reset các thuộc tính mặc định */
 * {
     margin: 0;
@@ -6,7 +7,7 @@
 }
 
 /* Đặt nền và font cho toàn bộ ứng dụng */
-body {
+tbody {
     font-family: 'Arial', sans-serif;
     background-color: #f4f7fa;
     color: #333;
@@ -24,19 +25,22 @@ h2, h3 {
 .central-heading {
     text-align: center;
     font-weight: bold;
-    color: #00897b; /* Xanh lá cây Giáng Sinh */
+    color: #00897b; 
     margin-bottom: 30px;
     font-size: 28px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #ddd;
+    padding: 30px 20px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
-
 /* Form thêm câu hỏi - đã làm nhỏ gọn hơn */
 form {
     background-color: white;
     padding: 15px;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    margin-bottom: 100px;
+    margin-top: 20px;
     max-width: 400px;
     margin-left: auto;
     margin-right: auto;
@@ -81,7 +85,7 @@ button {
     border-radius: 6px;
     cursor: pointer;
     font-size: 14px;
-    margin-top: 10px;
+    margin-top: 20px;
     transition: background-color 0.3s ease;
 }
 
@@ -99,6 +103,7 @@ table {
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
 }
 
 /* Định dạng tiêu đề bảng */
@@ -187,20 +192,6 @@ body::after {
     opacity: 0.3;
 }
 
-/* Các hiệu ứng tuyết rơi */
-@keyframes snowflakes {
-    0% {
-        top: -10%;
-        left: 50%;
-        opacity: 0.8;
-    }
-    100% {
-        top: 100%;
-        left: random(100%);
-        opacity: 1;
-    }
-}
-
 .snowflake {
     position: absolute;
     top: -10%;
@@ -230,3 +221,68 @@ body::after {
     pointer-events: none;
     z-index: 9999;
 }
+.logout-button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-left: auto;
+  }
+  .logout-button {
+    background: none;
+    border: none;
+    font-size: 24px; /* Kích thước icon lớn hơn */
+    cursor: pointer;
+  }
+  .button-group {
+    display: flex;  /* Sử dụng Flexbox để căn giữa các nút */
+    justify-content: center;  /* Căn giữa các nút theo chiều ngang */
+    align-items: center;  /* Căn giữa các nút theo chiều dọc */
+    background-color: black;
+    position: relative;  /* Đặt vị trí tương đối trong bố cục */
+      /* Căn nhóm nút xuống dưới bảng */
+    margin-top: 0px;  /* Tạo khoảng cách giữa bảng và nhóm nút */
+    gap: 10px;  /* Khoảng cách giữa các nút */
+}
+  .btn.btn-flat{
+    border-radius: 0;
+    border: 2px solid;
+    height: 50px;
+    background: transparent;
+    -webkit-transition: 0.9s;
+    transition: 0.9s;
+  }
+  .btn-flat.btn-primary{
+    color: #007bff;
+    background: linear-gradient(30deg, #007bff 50%, transparent 50%);
+    background-position: right bottom;
+    background-size: 220% 100%;
+  }
+  .btn-flat.btn-primary:hover{
+    background-position: left bottom;
+    border: 2px solid #0077ff;
+    color: #fff;
+  }
+  .btn-flat.btn-success{
+    color: #28a745;
+    background: linear-gradient(30deg, #28a745 50%, transparent 50%);
+    background-position: right bottom;
+    background-size: 220% 100%;
+  }
+  .btn-flat.btn-success:hover{
+    background-position: left bottom;
+    border: 2px solid #28a745;
+    color: #fff;
+  }
+  .btn-flat.btn-info{
+    color: #17a2b8;
+    background: linear-gradient(30deg, #17a2b8 50%, transparent 50%);
+    background-position: right bottom;
+    background-size: 220% 100%;
+  }
+  .btn-flat.btn-info:hover{
+    background-position: left bottom;
+    border: 2px solid #17a2b8;
+    color: #fff;
+  }
+  .add-question-form{
+    margin-top: 150px !important;
+  }

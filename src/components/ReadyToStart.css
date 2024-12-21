@@ -1,0 +1,68 @@
+.ready-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    width: 70vh;
+    background: linear-gradient(135deg, #f0f8ff, #b3e0ff); /* Gradient nền */
+    color: #333;  /* Màu chữ tối để dễ đọc */
+    font-family: 'Arial', sans-serif;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Căn giữa chính xác */
+    border-radius: 20px; /* Bo tròn các góc */
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1); /* Bóng đổ nhẹ cho khung */
+    padding: 30px;
+    text-align: center;
+    overflow: hidden; /* Đảm bảo không bị tràn nội dung */
+  }
+  
+  /* Tiêu đề */
+  .ready-title {
+    font-size: 36px;
+    font-weight: bold;
+    color: #007bff; /* Màu xanh dương */
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px; /* Tăng khoảng cách giữa các chữ */
+  }
+  
+  /* Mô tả */
+  .ready-description {
+    font-size: 18px;
+    margin-bottom: 30px;
+    color: #555; /* Màu chữ hơi nhạt hơn */
+    line-height: 1.5;
+  }
+  
+  /* Nút */
+  .ready-button {
+    padding: 15px 30px;
+    font-size: 18px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s; /* Hiệu ứng khi hover */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Bóng đổ cho nút */
+  }
+  
+  /* Hiệu ứng hover cho nút */
+  .ready-button:hover {
+    background-color: #0056b3; /* Màu nền khi hover */
+    transform: scale(1.05); /* Phóng to một chút khi hover */
+  }
+  
+  .ready-button:focus {
+    outline: none; /* Bỏ viền khi focus */
+  }
+  
+  /* Hiệu ứng khi nhấn nút */
+  .ready-button:active {
+    background-color: #004085; /* Màu khi nhấn nút */
+    transform: scale(0.98); /* Thu nhỏ một chút khi click */
+  }
+  
