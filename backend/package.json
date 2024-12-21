@@ -1,0 +1,28 @@
+{
+  "dependencies": {
+    "@chatscope/chat-ui-kit-react": "^2.0.3",
+    "@chatscope/chat-ui-kit-styles": "^1.4.0",
+    "@emotion/react": "^11.13.3",
+    "@emotion/styled": "^11.13.0",
+    "@mui/material": "^6.1.6",
+    "@tensorflow/tfjs": "^4.22.0",
+    "@tensorflow/tfjs-node": "^4.22.0",
+    "axios": "^1.7.7",
+    "bcryptjs": "^2.4.3",
+    "bootstrap": "^5.3.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "font-awesome": "^4.7.0",
+    "install": "^0.13.0",
+    "mammoth": "^1.8.0",
+    "ml-knn": "^3.0.0",
+    "mongoose": "^8.8.1",
+    "npm": "^10.9.1",
+    "openai": "^4.73.0",
+    "react": "^18.3.1",
+    "react-markdown": "^9.0.1",
+    "styled-components": "^6.1.13",
+    "tailwindcss": "^3.4.15"
+  }
+}
