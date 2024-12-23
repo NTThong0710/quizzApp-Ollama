@@ -47,44 +47,79 @@ function App() {
 
   const handleAddQuestion = async () => {
     try {
-      const adjustedData = {
-        ...newQuestionData,
-        answer: newQuestionData.answer -1 , 
+      // Validate required fields
+      if (!newQuestionData.question || !newQuestionData.topic) {
+        alert('Vui lòng điền đầy đủ câu hỏi và chủ đề');
+        return;
+      }
+  
+      // Ensure all options are filled
+      if (newQuestionData.options.some(opt => opt.trim() === '')) {
+        alert('Vui lòng điền đầy đủ các đáp án');
+        return;
+      }
+
+      const dataToSend = {
+        question: newQuestionData.question.trim(),
+        options: newQuestionData.options.map(opt => opt.trim()),
+        answer: Number(newQuestionData.answer) , 
+        topic: newQuestionData.topic.trim(),
+        points: Number(newQuestionData.points)
       };
   
-      const response = await axios.post('http://localhost:5000/api/questions', adjustedData);
+      // Log data for debugging
+      console.log('User selected answer:', newQuestionData.answer);
+      console.log('Sending to server:', dataToSend);
+  
+      // Send request
+      const response = await axios.post(
+        'http://localhost:5000/api/questions',
+        dataToSend,
+        {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }
+      );
   
       if (response.data) {
-        setQuestions((prevQuestions) => [...(prevQuestions || []), response.data]);
-  
+        // Update local state immediately
+        setQuestions(prevQuestions => [...(prevQuestions || []), response.data]);
+        
         // Reset form
         setNewQuestionData({
           question: '',
           options: ['', '', '', ''],
-          answer: 2, 
+          answer: 1, 
           topic: '',
           points: 1,
         });
   
+        // Close form and refresh data
         setShowAddQuestion(false);
-  
-        // Fetch lại dữ liệu để đồng bộ
         await fetchQuestions();
+        
+        alert('Thêm câu hỏi thành công!');
       }
     } catch (err) {
       console.error('Error adding question:', err);
-      alert('Có lỗi xảy ra khi thêm câu hỏi. Vui lòng thử lại.');
+      console.error('Error response:', err.response?.data);
+      
+      // Show detailed error message
+      if (err.response?.data?.message) {
+        alert(err.response.data.message);
+      } else {
+        alert('Có lỗi xảy ra khi thêm câu hỏi. Vui lòng thử lại.');
+      }
     }
   };
-  
-  
   
 
   const handleEditQuestion = async (id, updatedQuestion) => {
     try {
       const adjustedQuestion = {
         ...updatedQuestion,
-        answer: updatedQuestion.answer - 1
+        answer: updatedQuestion.answer 
       };
       const response = await axios.put(`http://localhost:5000/api/questions/${id}`, adjustedQuestion);
       if (response.data) {
@@ -250,14 +285,14 @@ function App() {
             ))}
           </div>
           <div className="form-group">
-            <label>Đáp án đúng (chỉ số từ 1 đến 4):</label>
+            <label>Đáp án đúng (chỉ số từ 0 đến 3) :</label>
             <input
               type="number"
               value={newQuestionData.answer}
               onChange={(e) => handleInputChange('answer', Number(e.target.value))}
               className="form-control"
-              min="1"
-              max="4"
+              min="0"
+              max="3"
               
             />
           </div>

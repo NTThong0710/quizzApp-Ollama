@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import'./Score.css';
+import './Score.css';
+
 const HighScores = () => {
     const [scores, setScores] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    // Fetch data từ API
     useEffect(() => {
         const fetchScores = async () => {
             try {
                 const response = await fetch('http://localhost:5000/api/scores');
                 const data = await response.json();
-                setScores(data); // Lưu dữ liệu bảng điểm
-                setLoading(false); // Tắt trạng thái loading
+                setScores(data);
+                setLoading(false);
             } catch (error) {
                 console.error('Lỗi khi tải dữ liệu:', error);
                 setLoading(false);
@@ -22,29 +22,33 @@ const HighScores = () => {
     }, []);
 
     if (loading) {
-        return <p>Đang tải dữ liệu...</p>;
+        return <div className="scores-loading">Đang tải dữ liệu...</div>;
     }
 
     return (
-        <div>
-            <table border="1">
-                <thead>
-                    <tr>
-                        <th>Tên Người Dùng</th>
-                        <th>Điểm Cao Nhất</th>
-                        <th>Ngày Đạt</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {scores.map((student, index) => (
-                        <tr key={index}>
-                            <td>{student.username}</td>
-                            <td>{student.score}</td>
-                            <td>{new Date(student.date).toLocaleDateString()}</td>
+        <div className="scores-container">
+            <div className="scores-wrapper">
+                <table className="scores-table">
+                    <thead className="scores-header">
+                        <tr className="scores-header-row">
+                            <th className="scores-header-cell">Tên Người Dùng</th>
+                            <th className="scores-header-cell">Điểm Cao Nhất</th>
+                            <th className="scores-header-cell">Ngày Đạt</th>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody className="scores-body">
+                        {scores.map((player, index) => (
+                            <tr key={index} className="scores-row">
+                                <td className="scores-cell scores-name">{player.username}</td>
+                                <td className="scores-cell scores-points">{player.score}</td>
+                                <td className="scores-cell scores-date">
+                                    {new Date(player.date).toLocaleDateString()}
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
         </div>
     );
 };

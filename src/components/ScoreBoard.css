@@ -10,7 +10,7 @@
   
   .scoreboard {
     max-width: 1200px;
-    margin: 30px auto;
+    margin: 70px auto;
     border-radius: 16px;
     box-shadow: var(--shadow-lg);
     overflow: hidden;

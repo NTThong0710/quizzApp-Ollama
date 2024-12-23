@@ -4,7 +4,7 @@ import Question from './components/Question';
 import TeacherDashboard from './components/TeacherDashBoard';
 import Auth from './components/Auth';
 import Chatbot from './components/Chatbot'; 
-import ReadyToStart from './components/ReadyToStart'; // Import ReadyToStart component
+import ReadyToStart from './components/ReadyToStart';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import 'font-awesome/css/font-awesome.min.css';
@@ -25,11 +25,26 @@ function App() {
     const [scoreHistory, setScoreHistory] = useState([]);
     const [timeLeft, setTimeLeft] = useState(15);
     const [loading, setLoading] = useState(true);
-    const [showChatbot, setShowChatbot] = useState(false); // Trạng thái hiển thị Chatbot
-    const [showScores, setShowScores] = useState(false); // Trạng thái hiển thị bảng điểm
-    const [isReady, setIsReady] = useState(false); // Trạng thái xác nhận sẵn sàng làm bài
+    const [showChatbot, setShowChatbot] = useState(false);
+    const [showScores, setShowScores] = useState(false);
+    const [isReady, setIsReady] = useState(false);
 
-    // Lấy câu hỏi và điểm số từ server
+    // Hàm reset quiz để làm lại bài
+    const handleResetQuiz = () => {
+        setAnswers([]);
+        setScore(null);
+        setCurrentQuestionIndex(0);
+        setIsSubmitted(false);
+        setSuggestion('');
+        setReviewSuggestions([]);
+        setShowReview(false);
+        setQuestionFeedback([]);
+        setTimeLeft(15);
+        setShowChatbot(false);
+        setShowScores(false);
+        setIsReady(false);
+    };
+
     useEffect(() => {
         async function fetchQuestionsAndScores() {
             try {
@@ -53,7 +68,6 @@ function App() {
         fetchQuestionsAndScores();
     }, [userId]);
 
-    // Quản lý bộ đếm thời gian
     useEffect(() => {
         if (isReady && timeLeft > 0 && !isSubmitted) {
             const timerInterval = setInterval(() => {
@@ -62,12 +76,10 @@ function App() {
     
             return () => clearInterval(timerInterval); 
         } else if (timeLeft === 0 && !isSubmitted) {
-            handleAnswer(currentQuestionIndex); // Tự động trả lời khi hết thời gian
+            handleAnswer(currentQuestionIndex);
         }
     }, [timeLeft, isSubmitted, currentQuestionIndex, isReady]);
-    
 
-    // Xử lý trả lời câu hỏi
     const handleAnswer = (index, answerIndex = -1) => {
         const newAnswers = [...answers];
         newAnswers[index] = answerIndex;
@@ -81,7 +93,6 @@ function App() {
         }
     };
 
-    // Xử lý nộp bài
     const handleSubmit = useCallback(async () => {
         if (!userId) {
             alert('Bạn cần đăng nhập để nộp bài');
@@ -101,20 +112,11 @@ function App() {
         }
     }, [userId, answers]);
 
-    // Tính toán tiến độ thời gian
     const timeProgress = (timeLeft / 15) * 100;
-
-    // Hiển thị/ẩn Chatbot
     const toggleChatbot = () => setShowChatbot(!showChatbot);
-
-    // Hiển thị/ẩn bảng điểm
     const toggleScores = () => setShowScores(!showScores);
 
-    // Xử lý đăng xuất
     const handleLogout = () => {
-        console.log('Đăng xuất thành công!');
-        
-        // Reset tất cả các trạng thái người dùng
         setUserId(null);
         setUserRole(null);
         setIsSubmitted(false);
@@ -124,7 +126,6 @@ function App() {
         setReviewSuggestions([]);
         setShowChatbot(false);
         setShowScores(false);
-
         window.location.href = ''; 
     };
 
@@ -219,6 +220,12 @@ function App() {
                                                             onClick={toggleScores}
                                                         >
                                                             {showScores ? 'Ẩn Bảng Điểm' : 'Hiện Bảng Điểm'}
+                                                        </button>
+                                                        <button
+                                                            className="btn btn-info btn-block btn-flat rounded"
+                                                            onClick={handleResetQuiz}
+                                                        >
+                                                            Làm Lại Bài
                                                         </button>
                                                     </div>
                                                     {showChatbot && <Chatbot />}

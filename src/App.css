@@ -279,3 +279,14 @@ button:hover {
   border: 2px solid #28a745;
   color: #fff;
 }
+.btn-flat.btn-warning{
+  color: #ffc117;
+  background: linear-gradient(30deg, #ffc117 50%, transparent 50%);
+  background-position: right bottom;
+  background-size: 220% 100%;
+}
+.btn-flat.btn-warning:hover{
+  background-position: left bottom;
+  border: 2px solid #ffc117;
+  color: #fff;
+}

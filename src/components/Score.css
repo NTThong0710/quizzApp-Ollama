@@ -1,3 +1,203 @@
-table{
-    margin-top: 80px;
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap');
+
+/* Container styles */
+.scores-container {
+    max-width: 900px;
+    margin: 3rem auto;
+    padding: 2.5rem;
+    /* background: linear-gradient(165deg, #0d1117 0%, #171b21 100%);
+    border-radius: 25px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5),
+                0 10px 30px rgba(74, 144, 226, 0.1); */
+    font-family: 'Orbitron', sans-serif;
+}
+
+.scores-wrapper {
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    /* background: rgba(255, 255, 255, 0.02); */
+    /* backdrop-filter: blur(10px); */
+}
+
+/* Table base styles */
+.scores-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    color: #e2e8f0;
+}
+
+/* Header styles */
+.scores-header {
+    background: linear-gradient(90deg, 
+        rgba(74, 144, 226, 0.15) 0%,
+        rgba(103, 178, 111, 0.15) 100%);
+    border-bottom: 2px solid rgba(74, 144, 226, 0.3);
+}
+
+.scores-header-row {
+    position: relative;
+}
+
+.scores-header-cell {
+    padding: 1.6rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 700;
+    font-size: 1.15rem;
+    text-align: left;
+    color: #e2e8f0;
+    text-shadow: 0 0 10px rgba(74, 144, 226, 0.5);
+}
+
+/* Body styles */
+.scores-body {
+    position: relative;
+}
+
+.scores-row {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.scores-row:hover {
+    background: rgba(74, 144, 226, 0.1);
+    transform: translateX(10px);
+}
+
+/* Cell styles */
+.scores-cell {
+    padding: 1.4rem 1.6rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.scores-name {
+    color: #4a90e2;
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+.scores-points {
+    color: #4a90e2;
+    font-weight: 700;
+    font-size: 1.2rem;
+    text-shadow: 0 0 10px rgba(74, 144, 226, 0.3);
+}
+
+.scores-date {
+    color: #828ea1;
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* Top 3 players styling */
+.scores-row:nth-child(1) .scores-name::before {
+    content: '👑';
+    margin-right: 10px;
+}
+
+.scores-row:nth-child(2) .scores-name::before {
+    content: '🥈';
+    margin-right: 10px;
+}
+
+.scores-row:nth-child(3) .scores-name::before {
+    content: '🥉';
+    margin-right: 10px;
+}
+
+/* Loading state */
+.scores-loading {
+    text-align: center;
+    color: #e2e8f0;
+    font-size: 1.3rem;
+    padding: 2.5rem;
+    font-weight: 600;
+    text-shadow: 0 0 15px rgba(74, 144, 226, 0.5);
+    animation: loadingPulse 2s infinite ease-in-out;
+}
+
+@keyframes loadingPulse {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; }
+}
+
+/* Ambient light effect */
+.scores-wrapper::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, 
+        rgba(74, 144, 226, 0.03) 0%,
+        transparent 50%);
+    animation: ambientLight 15s infinite linear;
+    pointer-events: none;
+}
+
+@keyframes ambientLight {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(-25%, -25%); }
+}
+
+/* Top player animation */
+.scores-row:first-child {
+    animation: topScoreGlow 4s ease-in-out infinite;
+}
+
+@keyframes topScoreGlow {
+    0%, 100% {
+        background: rgba(74, 144, 226, 0.05);
+        transform: translateX(0);
+    }
+    50% {
+        background: rgba(74, 144, 226, 0.1);
+        transform: translateX(5px);
+    }
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .scores-container {
+        margin: 1.5rem;
+        padding: 1.5rem;
+    }
+
+    .scores-header-cell,
+    .scores-cell {
+        padding: 1.2rem;
+        font-size: 1rem;
+    }
+
+    .scores-header-cell {
+        letter-spacing: 2px;
+    }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, 
+        rgba(74, 144, 226, 0.8) 0%,
+        rgba(103, 178, 111, 0.8) 100%);
+    border-radius: 6px;
+    border: 3px solid rgba(13, 17, 23, 0.9);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, 
+        rgba(84, 154, 236, 0.9) 0%,
+        rgba(113, 188, 121, 0.9) 100%);
 }

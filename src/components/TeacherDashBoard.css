@@ -93,84 +93,409 @@ button:hover {
     background-color: #c62828; /* Đỏ đậm */
 }
 
-/* Bảng với kiểu dáng chuyên nghiệp */
-table {
-    width: 100%;
-    margin-top: 30px;
-    border-collapse: separate;
-    border-spacing: 0 10px; /* Khoảng cách giữa các dòng */
-    background-color: white;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    margin-bottom: 30px;
+/* Container cho bảng */
+.table-container {
+  margin: 30px auto;
+  padding: 20px;
+  background: linear-gradient(145deg, #ffffff, #f0f2f5);
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  max-width: 1200px;
 }
 
-/* Định dạng tiêu đề bảng */
+/* Thanh tìm kiếm và filter */
+.table-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.search-box {
+  flex: 1;
+  min-width: 250px;
+  position: relative;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 12px 40px 12px 16px;
+  border: 2px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  background-color: white;
+}
+
+.search-box input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  outline: none;
+}
+
+.search-box::after {
+  content: "🔍";
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  opacity: 0.5;
+}
+
+/* Bảng chính */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  position: relative;
+}
+
+/* Header của bảng */
+thead {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
 th {
-    background-color: #388e3c; /* Màu nền xanh lá cây */
-    color: white;
-    font-weight: bold;
-    padding: 15px;
-    text-align: left;
-    text-transform: uppercase; /* Chữ in hoa cho tiêu đề */
-    letter-spacing: 1px; /* Khoảng cách giữa các chữ */
-    border-radius: 8px 8px 0 0; /* Bo góc trên của tiêu đề */
+  background: linear-gradient(135deg, #1a5f7a 0%, #134e63 100%);
+  color: white;
+  font-weight: 600;
+  padding: 16px 20px;
+  text-align: left;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  font-size: 14px;
+  position: relative;
+  transition: all 0.3s ease;
 }
 
-/* Định dạng các ô trong bảng */
+th:hover {
+  background: linear-gradient(135deg, #134e63 0%, #0d3c4d 100%);
+}
+
+/* Thêm icon sắp xếp */
+th.sortable {
+  cursor: pointer;
+  padding-right: 35px;
+}
+
+th.sortable::after {
+  content: "⇅";
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.5;
+  transition: opacity 0.2s;
+}
+
+th.sortable:hover::after {
+  opacity: 1;
+}
+
+/* Cells */
 td {
-    padding: 12px;
-    text-align: left;
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    transition: background-color 0.3s ease; /* Hiệu ứng chuyển màu nền */
+  padding: 16px 20px;
+  font-size: 14px;
+  color: #1f2937;
+  border-bottom: 1px solid #e5e7eb;
+  transition: all 0.3s ease;
 }
 
-/* Hiệu ứng hover cho các dòng trong bảng */
-tr:hover {
-    background-color: #f1f1f1;
-    transform: scale(1.02); /* Phóng to dòng khi hover */
-    transition: transform 0.2s ease; /* Hiệu ứng phóng to */
+/* Rows */
+tbody tr {
+  transition: all 0.3s ease;
+  background-color: white;
+  position: relative;
 }
 
-/* Định dạng các dòng chẵn và lẻ */
-tr:nth-child(odd) td {
-    background-color: #e8f5e9; /* Màu nền cho dòng lẻ */
+tbody tr:hover {
+  background-color: #f8fafc;
+  transform: translateY(-2px) scale(1.002);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  z-index: 1;
 }
 
-tr:nth-child(even) td {
-    background-color: #ffffff; /* Màu nền cho dòng chẵn */
+/* Stripe effect */
+tbody tr:nth-child(odd) {
+  background-color: #f9fafb;
 }
 
-/* Hiệu ứng khi di chuột vào các nút sửa/xóa */
-button.edit, button.delete {
-    background-color: #388e3c; /* Xanh lá cây */
-    color: white;
-    padding: 8px 16px;
-    border-radius: 6px;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+/* Actions column */
+.actions-cell {
+  display: flex;
+  gap: 8px;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
 }
 
-button.edit:hover {
-    background-color: #2c6e2f; /* Xanh đậm */
+tr:hover .actions-cell {
+  opacity: 1;
 }
 
-button.delete {
-    background-color: #dc3545; /* Đỏ */
+/* Buttons */
+.table-btn {
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 13px;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: none;
+  cursor: pointer;
 }
 
-button.delete:hover {
-    background-color: #c82333; /* Đỏ đậm */
+.btn-edit {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  color: white;
 }
 
-/* Hiệu ứng viền mượt cho bảng */
-table {
-    border-radius: 10px;
-    overflow: hidden;
+.btn-edit:hover {
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+}
+
+.btn-delete {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: white;
+}
+
+.btn-delete:hover {
+  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.2);
+}
+
+/* Status indicators */
+.status-badge {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.status-active {
+  background-color: #dcfce7;
+  color: #166534;
+}
+
+.status-inactive {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+/* Empty state */
+.table-empty {
+  padding: 40px;
+  text-align: center;
+  color: #6b7280;
+}
+
+.table-empty-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+  opacity: 0.5;
+}
+
+/* Loading state */
+.table-loading {
+  position: relative;
+}
+
+.table-loading::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 20;
+}
+
+.table-loading::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  border: 4px solid #f3f4f6;
+  border-top-color: #3b82f6;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  z-index: 21;
+}
+
+/* Pagination */
+.table-pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  padding: 16px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.pagination-info {
+  font-size: 14px;
+  color: #4b5563;
+}
+
+.pagination-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.pagination-btn {
+  padding: 8px 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  background: white;
+  color: #374151;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.pagination-btn:hover:not(:disabled) {
+  background: #f9fafb;
+  border-color: #d1d5db;
+}
+
+.pagination-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pagination-btn.active {
+  background: #3b82f6;
+  color: white;
+  border-color: #3b82f6;
+}
+
+/* Animations */
+@keyframes spin {
+  to {
+      transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: translateY(10px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+/* Responsive design */
+@media screen and (max-width: 1024px) {
+  .table-container {
+      margin: 20px;
+      padding: 15px;
+  }
+  
+  .table-controls {
+      flex-direction: column;
+  }
+  
+  .search-box {
+      width: 100%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  table {
+      display: block;
+      overflow-x: auto;
+  }
+  
+  th, td {
+      white-space: nowrap;
+      padding: 12px 16px;
+  }
+  
+  .table-btn {
+      padding: 6px 12px;
+  }
+  
+  .pagination-controls {
+      flex-wrap: wrap;
+  }
+}
+
+/* Tooltip */
+[data-tooltip] {
+  position: relative;
+}
+
+[data-tooltip]:before {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 6px 10px;
+  background: #1f2937;
+  color: white;
+  font-size: 12px;
+  border-radius: 4px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+}
+
+[data-tooltip]:hover:before {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Selection highlight */
+tbody tr.selected {
+  background-color: #e5edff !important;
+  border-left: 3px solid #3b82f6;
+}
+
+/* Checkbox styling */
+.table-checkbox {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  border: 2px solid #d1d5db;
+  appearance: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.table-checkbox:checked {
+  background-color: #3b82f6;
+  border-color: #3b82f6;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='white'%3E%3Cpath fill-rule='evenodd' d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z' clip-rule='evenodd'/%3E%3C/svg%3E");
 }
 
 /* Các họa tiết giáng sinh */
@@ -283,6 +608,121 @@ body::after {
     border: 2px solid #17a2b8;
     color: #fff;
   }
-  .add-question-form{
-    margin-top: 150px !important;
+ /* Form Container */
+.add-question-form {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 2rem auto;
+    border: 1px solid #e1e4e8;
+  }
+  
+  /* Form Groups */
+  .add-question-form .form-group {
+    margin-bottom: 1.5rem;
+    position: relative;
+  }
+  
+  /* Labels */
+  .add-question-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+  
+  /* Inputs */
+  .add-question-form .form-control {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background-color: #f8fafc;
+  }
+  
+  .add-question-form .form-control:focus {
+    border-color: #4299e1;
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.15);
+    outline: none;
+    background-color: #fff;
+  }
+  
+  /* Option Inputs Specific Styling */
+  .add-question-form .option-input {
+    margin-bottom: 0.75rem;
+    border-left: 4px solid #4299e1;
+  }
+  
+  .add-question-form .option-input:nth-child(2) { border-left-color: #48bb78; }
+  .add-question-form .option-input:nth-child(3) { border-left-color: #ecc94b; }
+  .add-question-form .option-input:nth-child(4) { border-left-color: #ed8936; }
+  
+  /* Number Input Specific */
+  .add-question-form input[type="number"] {
+    width: 120px;
+  }
+  
+  /* Add Question Button */
+  .add-question-form .btn-success {
+    width: 100%;
+    padding: 0.875rem;
+    background-color: #48bb78;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+  }
+  
+  .add-question-form .btn-success:hover {
+    background-color: #38a169;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(72, 187, 120, 0.2);
+  }
+  
+  .add-question-form .btn-success:active {
+    transform: translateY(0);
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .add-question-form {
+      padding: 1.5rem;
+      margin: 1rem;
+    }
+    
+    .add-question-form input[type="number"] {
+      width: 100%;
+    }
+  }
+  
+  /* Error State */
+  .add-question-form .form-control.error {
+    border-color: #fc8181;
+    background-color: #fff5f5;
+  }
+  
+  /* Success State */
+  .add-question-form .form-control.success {
+    border-color: #48bb78;
+    background-color: #f0fff4;
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .add-question-form {
+    animation: fadeIn 0.4s ease-out;
+    margin-top: 120px !important;
   }
